@@ -1,4 +1,4 @@
-package com.ashokit.model;
+package com.pavan.entity;
 
 //import javax.persistence.*;
 
@@ -6,14 +6,18 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 @Entity
-@Table(name = "Enquiries_tbl")
+@Table(name = "enquiry_tbl")
+@Access(AccessType.FIELD)
 public class Enquiry {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "enq_id")
-    private int enqId;
+    private Integer enqId;
     
     @Column(name = "student_name", nullable = false)
     private String studentName;
@@ -24,11 +28,11 @@ public class Enquiry {
     @Column(name = "course_name", nullable = false)
     private String courseName;
     
-    public int getEnqId() {
+    public Integer getEnqId() {
 		return enqId;
 	}
 
-	public void setEnqId(int enqId) {
+	public void setEnqId(Integer enqId) {
 		this.enqId = enqId;
 	}
 
@@ -103,9 +107,11 @@ public class Enquiry {
     private String enqStatus;
     
     @Column(name = "created_date")
+    @CreationTimestamp
     private LocalDateTime createdDate;
     
     @Column(name = "updated_date")
+    @UpdateTimestamp
     private LocalDateTime updatedDate;
     
     @ManyToOne

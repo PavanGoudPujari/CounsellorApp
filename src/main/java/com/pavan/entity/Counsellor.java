@@ -1,4 +1,4 @@
-package com.ashokit.model;
+package com.pavan.entity;
 
 
 //import javax.persistence.*;
@@ -7,14 +7,18 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 @Entity
 @Table(name = "Counsellor_tbl")
+@Access(AccessType.FIELD)
 public class Counsellor {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "counsellor_id")
-    private int counsellorId;
+    private Integer counsellorId;
     
     @Column(name = "name", nullable = false)
     private String name;
@@ -26,19 +30,21 @@ public class Counsellor {
     private String pwd;
     
     @Column(name = "phno", nullable = false)
-    private String phno;
+    private Long phno;
     
     @Column(name = "created_date")
+    @CreationTimestamp
     private LocalDateTime createdDate;
     
     @Column(name = "updated_date")
+    @UpdateTimestamp
     private LocalDateTime updatedDate;
 
-	public int getCounsellorId() {
+	public Integer getCounsellorId() {
 		return counsellorId;
 	}
 
-	public void setCounsellorId(int counsellorId) {
+	public void setCounsellorId(Integer counsellorId) {
 		this.counsellorId = counsellorId;
 	}
 
@@ -66,11 +72,11 @@ public class Counsellor {
 		this.pwd = pwd;
 	}
 
-	public String getPhno() {
+	public Long getPhno() {
 		return phno;
 	}
 
-	public void setPhno(String phno) {
+	public void setPhno(Long phno) {
 		this.phno = phno;
 	}
 
